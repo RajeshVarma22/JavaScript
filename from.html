@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Form</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="../1 Font Awesome/fontawesome-5.8.1 all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- <link rel="stylesheet" href="../12 Register Form.css"> -->
+    <style>
+        body {
+            background-image: conic-gradient(rgb(3, 3, 108), rgb(7, 135, 185), rgb(3, 3, 108), rgb(7, 135, 185), rgb(3, 3, 108));
+            background-size: cover;
+        }
+
+        .register-div {
+            background: linear-gradient(45deg, blueviolet, deeppink);
+            /* height: 500px; */
+            width: 350px;
+            margin: 70px auto;
+            padding: 20px;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0px 1px 2px white;
+        }
+
+        .form-group {
+            margin: 15px;
+        }
+
+        label {
+            display: block;
+            margin: 5px 0px;
+            font-weight: bold;
+        }
+
+        .register-div h1 {
+            text-align: center;
+            color: rgb(203, 251, 255);
+        }
+
+        .form-control {
+            border: none;
+            outline: none;
+            width: 300px;
+            height: 25px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 2px black;
+        }
+
+        .form-control:focus {
+            border: 2px solid rgb(57, 82, 239);
+            border-radius: 5px;
+            box-shadow: 0px 2px 4px rgb(244, 244, 247);
+        }
+
+        .icon {
+            text-align: center;
+            margin: auto;
+            margin-top: -60px;
+        }
+
+        .fa {
+            background-color: darkviolet;
+            border: 5px solid rgb(192, 0, 186);
+            outline: none;
+            border-radius: 50%;
+            color: rgb(244, 254, 255);
+            box-shadow: 0px 3px 5px black;
+        }
+
+        .btn {
+            margin: auto;
+            display: block;
+            background-image: linear-gradient(to right, #84fae4 0%, #8fd3f4 51%, #84fab0 100%);
+            border: none;
+            width: 250px;
+            box-shadow: 0px 2px 2px black;
+            padding: 0.5rem;
+            font-size: 25px;
+            color: rgb(13, 4, 136);
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+        }
+
+        option {
+            background-color: #84fab0;
+        }
+
+        .success {
+            text-align: center;
+            font-weight: bolder;
+            font-size: 70px;
+            color: white;
+            margin-top: 20%;
+        }
+
+        .is-form-invalid {
+            border: 5px solid red;
+            border-left: 10px solid red;
+            border-radius: 5px;
+            box-shadow: 0px 2px 4px rgb(247, 245, 245);
+        }
+
+        /* .text-danger{
+    color: white;
+    background-color: red;
+    border-radius: 5px;
+    padding: 3px;
+} */
+    </style>
+</head>
+
+<body>
+    <div class="register-div">
+        <div class="icon">
+            <i class="fa fa-user-circle fa-5x"></i>
+        </div>
+        <h1>Register Here</h1>
+        <form action="" id="form">
+            <div class="form-group">
+                <label for="username">User Name</label>
+                <input type="text" class="form-control" id="username">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password"
+                    placeholder="Must use A-Z & a-z & num & symbol ">
+            </div>
+            <div class="form-group">
+                <label for="designation">Designation</label>
+                <select id="designation" class="form-control">
+                    <option value=""></option>
+                    <option value="designation1" class="values">Jr.Software Developer</option>
+                    <option value="designation2" class="values">Sr.Software Developer</option>
+                    <option value="designation3" class="values">FullStack Developer</option>
+                    <option value="designation4" class="values">FrontEnd Developer</option>
+                    <option value="designation5" class="values">BackEnd Developer</option>
+                </select>
+            </div>
+            <button class="btn">Register Here</button>
+        </form>
+    </div>
+
+
+    <script>
+
+
+        const form = document.querySelector('#form');
+        const submit = document.querySelector('.register-div');
+        const userName = document.querySelector('#username');
+        const email = document.querySelector('#email');
+        const password = document.querySelector('#password');
+        const designation = document.querySelector('#designation');
+        const option = document.querySelector('option');
+        const body = document.querySelector('body');
+
+
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (validateForm()) {
+                submit.classList.add('animate__animated');
+                submit.classList.add('animate__hinge');
+                let success = document.createElement('h2');
+                let text = document.createTextNode('Form Successfully Submitted');
+                success.appendChild(text);
+                success.classList.add('success');
+                success.classList.add('animate__animated');
+                success.classList.add('animate__backInDown');
+                body.style.overflow = 'hidden';
+                setTimeout(() => {
+                    body.style.background = 'radial-gradient(green,darkgreen)';
+                    body.insertBefore(success, submit);
+                }, 2000)
+                // setTimeout(() => body.insertBefore(success, submit), 2000);
+            };
+        });
+
+        let validateForm = () => {
+            return (UserName() && Email() && Password() && Designation());
+        };
+
+        let UserName = () => {
+            let regExp = /^[a-zA-z0-9]{4,10}$/;
+            if (regExp.test(userName.value)) {
+                return true;
+            } else {
+                makeInvalid(userName);
+                return false;
+            }
+        };
+
+        let Email = () => {
+            let regExp = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
+            if (regExp.test(email.value)) {
+                return true;
+            } else {
+                makeInvalid(email);
+                return false;
+            }
+        }
+        let Password = () => {
+            let regExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+            if (regExp.test(password.value)) {
+                return true;
+            } else {
+                makeInvalid(password);
+                password.classList.add('is-form-invalid');
+                password.value = '';
+                return false;
+            }
+        }
+        let Designation = () => {
+            console.log("S")
+            if (designation.value != '') {
+                return true;
+            } else {
+                makeInvalid(designation);
+                return false;
+            }
+        }
+
+        let makeInvalid = (input) => {
+            let parent = input.parentElement;
+            parent.classList.add('animate__animated');
+            parent.classList.add('animate__jello');
+        }
+
+
+    </script>
+</body>
+
+</html>
