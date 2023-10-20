@@ -1,3 +1,6 @@
+//  ['123456789', '123456789', index: 6, input: 'zappa.123456789@mam.com', groups: undefined] this is the output of the match here in match[0] consits the digits and this is the result of regex.
+// index : 6 is starting of the number in the string. and groups see in below.
+
 function extractedNumber(inputString) {
 
         const regex = /(\d{9}|\d{8})/;
@@ -30,7 +33,7 @@ function extractedNumber(inputString) {
 
   ...........................................................................................................................................................................
 // This is to find out the area code, exchange code, subscribe number. These are called as groups.
-
+ 
         const text = "Contact us at (133) 45-7890 or (456) 787-1234.";
 
         const regex = /(?<areaCode>\(\d{3}\)) (?<exchangeCode>\d{3})-(?<subscriberNumber>\d{4})/g;
