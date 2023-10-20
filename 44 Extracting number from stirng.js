@@ -29,7 +29,7 @@ function extractedNumber(inputString) {
         console.log(parseInt(result2)); 
 
   ...........................................................................................................................................................................
-// This is to find out the area code,  
+// This is to find out the area code, exchange code, subscribe number. These are called as groups.
 
         const text = "Contact us at (133) 45-7890 or (456) 787-1234.";
 
