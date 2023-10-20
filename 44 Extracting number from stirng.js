@@ -33,6 +33,14 @@ function extractedNumber(inputString) {
 
   ...........................................................................................................................................................................
 // This is to find out the area code, exchange code, subscribe number. These are called as groups.
+// 0:"(133) 457-7890"
+// 1:"(133)"
+// 2:"457"
+// 3:"7890"
+// groups:{areaCode: '(133)', exchangeCode: '457', subscriberNumber: '7890'}
+// index:14
+// input:"Contact us at (133) 457-7890 or (456) 787-1234 or (326) 667-1254."
+// length:4
  
         const text = "Contact us at (133) 45-7890 or (456) 787-1234.";
 
